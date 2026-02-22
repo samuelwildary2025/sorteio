@@ -1,12 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
 const prismaClientSingleton = () => {
-    return new PrismaClient({
-        // Handle next build environment where DATABASE_URL might be omitted
-        ...(process.env.NODE_ENV === 'production' && !process.env.DATABASE_URL
-            ? { datasources: { db: { url: "postgresql://dummy:dummy@localhost:5432/dummy" } } }
-            : {})
-    })
+    return new PrismaClient()
 }
 
 declare const globalThis: {
