@@ -13,7 +13,9 @@ const prismaClientSingleton = () => {
         }) as unknown as PrismaClient;
     }
 
-    return new PrismaClient({});
+    return new PrismaClient({
+        errorFormat: 'minimal',
+    });
 }
 
 declare const globalThis: {
