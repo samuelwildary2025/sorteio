@@ -13,7 +13,7 @@ const prismaClientSingleton = () => {
         }) as unknown as PrismaClient;
     }
 
-    return new PrismaClient();
+    return new PrismaClient({});
 }
 
 declare const globalThis: {
