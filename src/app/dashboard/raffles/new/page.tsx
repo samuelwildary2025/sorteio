@@ -7,26 +7,46 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Save, ImagePlus } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useFormState, useFormStatus } from "react-dom";
+import { createRaffle } from "@/app/actions/raffle";
+
+const initialState = {
+    error: "",
+    success: false,
+};
+
+function SubmitButton() {
+    const { pending } = useFormStatus();
+
+    return (
+        <Button
+            type="submit"
+            disabled={pending}
+            className="w-full h-14 font-black uppercase tracking-wider bg-primary text-primary-foreground hover:bg-primary/90"
+        >
+            {pending ? "Salvando..." : (
+                <>
+                    <Save className="mr-2 h-5 w-5" /> Salvar Sorteio
+                </>
+            )}
+        </Button>
+    );
+}
 
 export default function NewRafflePage() {
-    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+    const [state, formAction] = useFormState(createRaffle, initialState);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
-            setIsLoading(false);
-            window.location.href = "/dashboard/raffles";
-        }, 1000);
-    };
+    if (state.success) {
+        router.push("/dashboard/raffles");
+    }
 
     return (
         <div className="space-y-6 max-w-4xl mx-auto">
             <div className="flex items-center gap-4">
                 <Link href="/dashboard/raffles">
-                    <Button variant="outline" size="icon" className="h-10 w-10 border-zinc-200 dark:border-zinc-800 rounded-full">
+                    <Button variant="outline" size="icon" className="h-10 w-10 border-zinc-200 dark:border-zinc-800 rounded-full" type="button">
                         <ArrowLeft className="h-4 w-4" />
                         <span className="sr-only">Voltar</span>
                     </Button>
@@ -37,9 +57,16 @@ export default function NewRafflePage() {
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form action={formAction}>
                 <div className="grid gap-6 md:grid-cols-3">
                     <div className="md:col-span-2 space-y-6">
+
+                        {state?.error && (
+                            <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-lg font-bold">
+                                {state.error}
+                            </div>
+                        )}
+
                         <Card>
                             <CardHeader>
                                 <CardTitle>Informações Básicas</CardTitle>
@@ -50,6 +77,7 @@ export default function NewRafflePage() {
                                     <Label htmlFor="title" className="font-bold uppercase text-xs tracking-wider text-zinc-500">Título do Prêmio</Label>
                                     <Input
                                         id="title"
+                                        name="title"
                                         placeholder="Ex: iPhone 16 Pro Max 1TB"
                                         required
                                         className="h-12 border-zinc-300 dark:border-zinc-700 focus-visible:ring-primary"
@@ -59,6 +87,7 @@ export default function NewRafflePage() {
                                     <Label htmlFor="description" className="font-bold uppercase text-xs tracking-wider text-zinc-500">Descrição Curta</Label>
                                     <Textarea
                                         id="description"
+                                        name="description"
                                         placeholder="Descreva os detalhes do prêmio..."
                                         className="resize-none border-zinc-300 dark:border-zinc-700 focus-visible:ring-primary min-h-[100px]"
                                         required
@@ -80,8 +109,10 @@ export default function NewRafflePage() {
                                             <span className="absolute left-3 top-3.5 text-zinc-500 font-bold">R$</span>
                                             <Input
                                                 id="price"
+                                                name="price"
                                                 type="number"
                                                 step="0.01"
+                                                min="0.01"
                                                 placeholder="0,00"
                                                 required
                                                 className="h-12 border-zinc-300 dark:border-zinc-700 focus-visible:ring-primary pl-10"
@@ -92,7 +123,9 @@ export default function NewRafflePage() {
                                         <Label htmlFor="tickets" className="font-bold uppercase text-xs tracking-wider text-zinc-500">Total de Tickets</Label>
                                         <Input
                                             id="tickets"
+                                            name="tickets"
                                             type="number"
+                                            min="1"
                                             placeholder="Ex: 1000"
                                             required
                                             className="h-12 border-zinc-300 dark:border-zinc-700 focus-visible:ring-primary"
@@ -103,6 +136,7 @@ export default function NewRafflePage() {
                                     <Label htmlFor="endDate" className="font-bold uppercase text-xs tracking-wider text-zinc-500">Data do Sorteio (Previsão)</Label>
                                     <Input
                                         id="endDate"
+                                        name="endDate"
                                         type="datetime-local"
                                         required
                                         className="h-12 border-zinc-300 dark:border-zinc-700 focus-visible:ring-primary"
@@ -142,17 +176,7 @@ export default function NewRafflePage() {
                                 </div>
                             </CardContent>
                             <CardFooter className="pt-4 border-t border-zinc-100 dark:border-zinc-800">
-                                <Button
-                                    type="submit"
-                                    disabled={isLoading}
-                                    className="w-full h-14 font-black uppercase tracking-wider bg-primary text-primary-foreground hover:bg-primary/90"
-                                >
-                                    {isLoading ? "Salvando..." : (
-                                        <>
-                                            <Save className="mr-2 h-5 w-5" /> Salvar Sorteio
-                                        </>
-                                    )}
-                                </Button>
+                                <SubmitButton />
                             </CardFooter>
                         </Card>
                     </div>
