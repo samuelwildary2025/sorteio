@@ -16,7 +16,7 @@ export function Hero() {
             <div className="container mx-auto relative z-20 px-4 md:px-6">
                 <div className="flex flex-col items-center text-center space-y-8">
 
-                    <div className="inline-flex items-center rounded-full border border-black/10 bg-white/20 px-4 py-1.5 text-sm font-bold shadow-md backdrop-blur-md text-black/80">
+                    <div className="inline-flex items-center rounded-full border border-white/10 bg-white/20 px-4 py-1.5 text-sm font-bold shadow-md backdrop-blur-md text-white">
                         <span className="flex items-center gap-2">
                             <span className="relative flex h-3 w-3">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -27,12 +27,12 @@ export function Hero() {
                     </div>
 
                     <div className="space-y-4 max-w-4xl mx-auto">
-                        <h1 className="text-4xl font-black tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl text-black drop-shadow-sm uppercase">
+                        <h1 className="text-4xl font-black tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl text-white drop-shadow-sm uppercase">
                             O Próximo Milionário <br />
-                            <span className="text-white drop-shadow-md">Pode Ser Você!</span>
+                            <span className="text-secondary drop-shadow-md">Pode Ser Você!</span>
                         </h1>
 
-                        <p className="mx-auto max-w-[700px] text-black/80 md:text-xl font-medium">
+                        <p className="mx-auto max-w-[700px] text-white/80 md:text-xl font-medium">
                             Não deixe a sorte passar. Adquira seu eBook agora e garanta seus números da sorte para o grande prêmio.
                         </p>
                     </div>
@@ -50,21 +50,21 @@ export function Hero() {
                         </Button>
                     </div>
 
-                    <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-black/70 font-bold text-sm uppercase tracking-wide">
+                    <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-white/70 font-bold text-sm uppercase tracking-wide">
                         <div className="flex flex-col items-center">
-                            <span className="text-2xl md:text-3xl text-black">10k+</span>
+                            <span className="text-2xl md:text-3xl text-white">10k+</span>
                             <span>Ganhadores</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <span className="text-2xl md:text-3xl text-black">R$ 5M+</span>
+                            <span className="text-2xl md:text-3xl text-white">R$ 5M+</span>
                             <span>Em Prêmios</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <span className="text-2xl md:text-3xl text-black">100%</span>
+                            <span className="text-2xl md:text-3xl text-white">100%</span>
                             <span>Seguro</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <span className="text-2xl md:text-3xl text-black">Instantâneo</span>
+                            <span className="text-2xl md:text-3xl text-white">Instantâneo</span>
                             <span>Pix na Hora</span>
                         </div>
                     </div>

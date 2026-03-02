@@ -16,7 +16,7 @@ export function Header() {
 
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="text-2xl font-black tracking-tighter uppercase italic">
-                            Pix do <span className="text-white drop-shadow-md">eBook</span>
+                            PIX <span className="text-secondary drop-shadow-md">REGIONALL</span>
                         </span>
                     </Link>
                 </div>

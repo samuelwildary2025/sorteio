@@ -10,7 +10,7 @@ export function StickyPurchaseWidget() {
     const total = quantity * pricePerTicket;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-secondary border-t border-white/10 p-4 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] md:hidden safe-area-bottom">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-secondary border-t border-secondary-foreground/10 p-4 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] md:hidden safe-area-bottom">
             <div className="flex flex-col gap-4">
 
                 {/* Quick Selectors */}
@@ -51,12 +51,12 @@ export function StickyPurchaseWidget() {
 
                 {/* Controls & Buy Action */}
                 <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-3 bg-secondary-foreground/5 rounded-full px-2 py-1 border border-white/10">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-white hover:bg-white/20" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+                    <div className="flex items-center gap-3 bg-secondary-foreground/5 rounded-full px-2 py-1 border border-secondary-foreground/10">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-secondary-foreground hover:bg-secondary-foreground/10" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                             <Minus className="h-4 w-4" />
                         </Button>
-                        <span className="text-white font-bold w-8 text-center">{quantity}</span>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-white hover:bg-white/20" onClick={() => setQuantity(quantity + 1)}>
+                        <span className="text-secondary-foreground font-bold w-8 text-center">{quantity}</span>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-secondary-foreground hover:bg-secondary-foreground/10" onClick={() => setQuantity(quantity + 1)}>
                             <Plus className="h-4 w-4" />
                         </Button>
                     </div>
