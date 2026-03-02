@@ -11,7 +11,7 @@ export function FeaturedPrizes() {
     return (
         <section id="prizes" className="py-16 md:py-24 container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center text-center mb-12">
-                <Badge variant="outline" className="mb-4 border-primary text-primary px-4 py-1 text-sm uppercase tracking-widest font-bold">
+                <Badge variant="outline" className="mb-4 rounded-full border-primary text-primary px-4 py-1 text-sm uppercase tracking-widest font-bold">
                     Sorteios Ativos
                 </Badge>
                 <h2 className="text-3xl font-black tracking-tighter sm:text-5xl uppercase">
@@ -25,7 +25,7 @@ export function FeaturedPrizes() {
                         <Card className="group overflow-hidden flex flex-col h-full border-2 border-transparent hover:border-primary transition-all duration-300 shadow-lg hover:shadow-xl rounded-2xl bg-white dark:bg-zinc-900 ring-1 ring-black/5 cursor-pointer">
                             <div className="relative aspect-video bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 flex flex-col justify-end p-6">
-                                    <h3 className="font-black text-2xl text-white uppercase italic tracking-tighter shadow-black drop-shadow-lg leading-none mb-1">{prize.title}</h3>
+                                    <h3 className="font-black text-2xl text-white uppercase tracking-tighter shadow-black drop-shadow-lg leading-none mb-1">{prize.title}</h3>
                                     <p className="text-white/80 text-xs font-medium uppercase tracking-wide">{prize.description}</p>
                                 </div>
 
@@ -36,7 +36,7 @@ export function FeaturedPrizes() {
 
                                 <div className="absolute top-3 right-3 z-20 flex gap-2">
                                     {prize.tags.map(tag => (
-                                        <Badge key={tag} className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 shadow-sm">
+                                        <Badge key={tag} className="rounded-full bg-primary text-white font-bold hover:bg-primary/90 shadow-sm border-none">
                                             {tag}
                                         </Badge>
                                     ))}
@@ -45,11 +45,11 @@ export function FeaturedPrizes() {
 
                             <CardContent className="p-6 flex-1 space-y-6">
                                 <div className="space-y-2">
-                                    <div className="flex justify-between text-xs font-bold uppercase tracking-wide text-zinc-500">
+                                    <div className="flex justify-between text-xs font-black uppercase tracking-wide text-primary">
                                         <span className="flex items-center gap-1">
-                                            <Ticket className="h-3 w-3 text-primary" /> Vendidos
+                                            <Ticket className="h-3 w-3" /> Vendidos
                                         </span>
-                                        <span className="text-primary">{Math.round((prize.soldTickets / prize.totalTickets) * 100)}%</span>
+                                        <span>{Math.round((prize.soldTickets / prize.totalTickets) * 100)}%</span>
                                     </div>
                                     <div className="h-4 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-700">
                                         <div
@@ -61,7 +61,7 @@ export function FeaturedPrizes() {
                                     </div>
                                 </div>
 
-                                <div className="flex justify-between items-center p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-700">
+                                <div className="flex justify-between items-center p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl">
                                     <div className="text-xs font-bold text-zinc-500 uppercase flex items-center gap-1">
                                         <Clock className="h-3 w-3" /> Sorteio em {prize.endsIn}
                                     </div>
